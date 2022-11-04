@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center align-items-center h-100">
+    <div class="card card-container p-4 m-0 shadow">
+        <form [formGroup]="registerForm" (submit)="save()">
+            <div class="mb-3">
+                <label class="form-label">Nick name</label>
+                <input type="text" class="form-control" formControlName="nickName">
+                <div *ngIf="nickName && (nickName.dirty || nickName.touched)">
+                    <span class="text-danger" *ngIf="nickName.getError('required') ">* Nickname is required</span>
+                    <span class="text-danger" *ngIf="nickName.getError('maxlength') ">* Please enter a maximum of 40
+                        characters</span>
+                    <span class="text-danger" *ngIf="nickName.getError('existing') ">* Nickname is already existing</span>
+
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" formControlName="password">
+                <div *ngIf="password && (password.dirty || password.touched)">
+                    <span class="text-danger" *ngIf="password.getError('required') ">* Confirm password is
+                        required</span>
+                    <span class="text-danger" *ngIf="password.getError('maxlength') ">* Please enter a maximum of 40
+                        characters</span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Confirm password</label>
+                <input type="password" class="form-control" formControlName="confirmPassword">
+                <div *ngIf="confirmPassword && (confirmPassword.dirty || confirmPassword.touched)">
+                    <span class="text-danger" *ngIf="confirmPassword.getError('required') ">* Confirm password is
+                        required</span>
+                    <span class="text-danger" *ngIf="confirmPassword.getError('notmatched') ">* Password doesn't
+                        match</span>
+                    <span class="text-danger" *ngIf="confirmPassword.getError('maxlength') ">* Please enter a maximum of
+                        40 characters</span>
+                    <span class="text-danger" *ngIf="confirmPassword.getError('notEquivalent') ">* Passwords did not match</span>
+
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="text" class="form-control" formControlName="email">
+                <div *ngIf="email && (email.dirty || email.touched)">
+                    <span class="text-danger" *ngIf="email.getError('required') ">* Email is required</span>
+                    <span class="text-danger" *ngIf="email.getError('maxlength') ">* Please enter a maximum of 40
+                        characters</span>
+                    <span class="text-danger" *ngIf="email.getError('pattern') ">* Invalid email pattern</span>
+                    <span class="text-danger" *ngIf="email.getError('existing') ">* Email is already existing</span>
+
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <input type="text" class="form-control" formControlName="phone" NumericOnly>
+                <div *ngIf="phone && (phone.dirty || phone.touched)">
+                    <span class="text-danger" *ngIf="phone.getError('required') ">* Phone is required</span>
+                    <span class="text-danger" *ngIf="phone.getError('maxlength') ">* Please enter a maximum of 15
+                        characters</span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Country</label>
+                <select class="form-select" formControlName="country">
+                    <option *ngFor="let country of listCountry" [value]="country.value">{{country.label}}</option>
+                </select>
+                <div *ngIf="country && (country.dirty || country.touched)">
+                    <span class="text-danger" *ngIf="country.getError('required') ">* Country is required</span>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Sign up</button>
+            <div class="mb-3 text-center">
+                <a class="nav-link" routerLink="/auth/login">
+                    <span class="menu-title">Back to login page</span>
+                    <i class="mdi mdi-calendar-text"></i>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

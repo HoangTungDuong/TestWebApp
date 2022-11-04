@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-center align-items-center h-100">
+    <div class="card card-container p-4 m-0 shadow">
+        <form [formGroup]="loginForm" (submit)="login()">
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" formControlName="username">
+                <span class="text-danger" *ngIf="username && username.getError('required') &&
+                (username.dirty || username.touched)">* Username is required</span>
+            </div>
+            <div class="mb-3">
+                <label for="inputPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="inputPassword" formControlName="password">
+                <span class="text-danger" *ngIf="password && password.getError('required') &&
+                (password.dirty || password.touched)">* Password is required</span>
+            </div>
+            <button type="submit" class="btn btn-primary mb-3">Sign in</button>
+            <div class="mb-3" *ngIf="isLoginFailed">
+                <span class="text-danger" >The Username or Password is Incorrect</span>
+            </div>
+            <div class="mb-5">
+                <label>
+                    <input type="checkbox" name="remember" formControlName="rememberMe"> Remember me
+                </label>
+            </div>
+            <div class="mb-3 text-center">
+                <a class="nav-link" routerLink="/auth/registration">
+                    <span class="menu-title">Create your account</span>
+                    <i class="mdi mdi-calendar-text"></i>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

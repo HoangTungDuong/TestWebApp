@@ -1,0 +1,19 @@
+@media only screen and (max-width: 600px) {
+    h2 {
+        margin: 10px;
+    }
+    hr {
+        margin: 0px;
+    }
+    .left-bg {
+        display: none;
+    }
+    .right-bg {
+        background-image: url('../../../../assets/images/grass-wallpaper.jpg');
+        background-size: cover;
+    }
+}
+.left-bg {
+    background-image: url('../../../../assets/images/grass-wallpaper.jpg');
+    background-size: cover;
+}
